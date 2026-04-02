@@ -4,16 +4,16 @@
 
 ### 📁 Local Project Location
 ```
-C:\Users\Admin\Desktop\pergoclean1
+C:\Users\Admin\Desktop\pergoclean2
 ```
 
 ### 🌐 Live URLs
 
 | Platform | URL | Status |
 |----------|-----|--------|
-| **Vercel Production** | https://pergoclean1.vercel.app | ✅ LIVE |
-| **GitHub Repository** | https://github.com/tozsolutions/pergoclean1 | ✅ SYNCED |
-| **Vercel Dashboard** | https://vercel.com/tozsolutions/pergoclean1 | ✅ CONNECTED |
+| **Vercel Production** | https://pergoclean2.vercel.app | ✅ LIVE |
+| **GitHub Repository** | https://github.com/tozsolutions/pergoclean2 | ✅ SYNCED |
+| **Vercel Dashboard** | https://vercel.com/tozsolutions/pergoclean2 | ✅ CONNECTED |
 
 ### 🔄 Automatic Deployment
 
