@@ -1,0 +1,324 @@
+ttps://56369-0c6fcafc70ba4b76a8d2be44264e33d4-v5-dev.dev.atoms.dev/ bu sıteye n8n otomasyonu ıle whatsapp, mail ve instagram otomasyonu ekleyerek hazır deploy edılır hale getır
+Firma Adı: PergoClean
+**İletişim Bilgileri**
+Adres: Timko İş Merkezi, Macun Mahallesi 177. Cadde V8 Kat 1, Yenimahalle/Ankara
+Web: www.pergoclean.com.tr
+WhatsApp: +90 536 773 14 04
+WhatsApp: +90 530 955 00 28
+E-posta: Merhaba@pergoclean.com.tr
+**Sosyal Medya Hesapları**
+Instagram: @PergoClean
+TikTok: @PergoClean
+YouTube: @PergoClean
+Pinterest: @PergoClean
+**Hizmet Amacımız**
+Pergola kumaşlarında oluşan:
+- Kir, yağ, duman ve buharlaşma kaynaklı atıkların temizlenmesi,
+- Lekelerin çıkarılması,
+- Kumaşın rengi bozulmadan gerekli bakımın yapılması.
+Ayrıca, LED ışık değiştirme ve renklendirme hizmetimizle de destek sağlıyoruz. Pek çok pergola sisteminde kullanılan fabrika çıkışlı LED’ler zaman içinde eskir ya da kullanım nedeniyle yanabilir. Bu durumlarda eskimiş veya hasar görmüş LED’lerin değiştirilmesi hizmeti sunuyor, tüm işlemleri kayıt altına alarak süreci güvenilir ve şeffaf bir şekilde tamamlıyoruz.
+Müşterilerimizin kirlenmiş tente ve pergola kumaşlarını değiştirmek çoğu zaman yüksek maliyetlere, mekanların üstünün açık kalmasından kaynaklanan iş kaybına ve işletme aksaklıklarına yol açmaktadır. Daha da önemlisi, teknik kumaşların değişim ücretleri genellikle yeni bir ürünün maliyetine yaklaşmaktadır. Bu mağduriyetleri önlemek amacıyla, minimum maliyetle eskimiş ve kirlenmiş teknik kumaşlarınızı %80-90 oranında ilk günkü temizliğine kavuşturarak müşterilerimize ekonomik ve pratik çözümler sunuyoruz.
+Plan: PergoClean Web Site Kurulumu - n8n Otomasyon Entegrasyonu
+
+
+web sıtesını github a deploy etmek ıcın tum entegrasyonlar hazır sekıdle hazırla. 1. Proje Kurulumu
+Next.js + shadcn/ui ile projeyi başlat
+Mevcut tasarımı koru
+2. n8n Webhook Entegrasyonu
+Tüm formlar için n8n webhook bağlantısı
+Environment variables ile konfigürasyon
+3. Otomasyon Özellikleri
+WhatsApp: Form gönderimlerinde otomatik WhatsApp mesajı
+Email: Randevu ve fiyat hesaplama için otomatik mail
+Instagram: Lead bilgilerini CRM'e aktarma
+4. Admin Paneli
+Webhook URL'lerini yönetme
+Otomasyon logları görüntüleme
+5. Deploy
+Netlify'a deploy
+Environment variables ayarlama
+Form builder for n8n - Reddit
+# PergoClean - n8n Otomasyon Projesi
+## Yapılacaklar
+- [x] Proje kurulumu (Next.js + shadcn)
+- [ ] shadcn bileşenlerini ekle
+- [ ] Ana sayfa tasarımını oluştur
+- [ ] n8n webhook entegrasyonu için API route'ları oluştur
+- [ ] Fiyat Hesapla formu + n8n webhook
+- [ ] Randevu Al formu + n8n webhook
+- [ ] Fotoğraf Yükle formu + n8n webhook
+- [ ] İletişim formu + n8n webhook
+- [ ] WhatsApp, Email, Instagram otomasyon bilgilendirmesi
+- [ ] Admin paneli (webhook URL yönetimi)
+- [ ] Environment variables ayarları
+- [ ] Deploy
+## n8n Otomasyon Akışları
+### WhatsApp Otomasyonu
+- Form gönderimlerinde müşteriye WhatsApp mesajı
+- Randevu hatırlatmaları
+### Email Otomasyonu
+- Fiyat teklifi gönderimi
+- Randevu onayı
+- Teşekkür mesajları
+### Instagram Otomasyonu
+- Lead bilgilerini CRM'e aktarma
+- Takip mesajları
+
+
+
+
+"pergola" geçen yerlerdeki tüm yazıları "Pergola RollingRoof BioClimatik Tente" olarak değiştir. Mutlu Müşteri yada benzer bir alan olusturup burda goresel ve bır ıkı vıdeo eklenıp burası referans yada tamamlanan işler gibi album seklınde olabılır ve kucuk bir hız ıle yavas sekılde sayfada sağdan sola kayabılır tıklanınca ılgılı resım arsıvı bolumu referans yada adı ne ıse o bolume atılır ve orda kı bıten sılerımmız referans ıslerımızı gorebılecek sekılde revıze et. ayrıca bırcok resım var bunları yuklemem ıcın bır admın palenı olabılır sadece benım kullanabılecegım. web sıte zıyaretcılerıne gorunmeyen.
+Hizmetler sayfasına önce/sonra karşılaştırma slider özelliği ekleyin
+Make the following modifications:
+Boxedit content from "PERGOLA ROLLİNGROOF" to "Pergola BioClimatic Tente".
+Boxremove the element.
+Make the following modifications:
+Header3edit content from "Çankaya Villa Pergola Temizliğ..." to "Çankaya Villa Rolling Roof Tem...".
+Header3edit content from "Keçiören Restoran Tente Bakımı" to "Keçiören Restoran&nbsp; Gerdir...".
+Header3edit content from "Yenimahalle Cafe BioClimatik T..." to "Yenimahalle Cafe Hareketli Cam...".
+Header3edit content from "Etimesgut Otel RollingRoof Bak..." to "Etimesgut Otel Kasetli Tente B...".
+Make the following modifications:
+Buttonedit content from "BioClimatik Temizlik" to "BioClimaticTemizlik".Make the following modifications:
+Boxadd link "/referanslar".
+Imagereplace with uploaded image
+Please help me improve the SEO settings of the website.
+OTOMASYON BOLUMUNU KALDIR BUNUN YERINE BLOG BOLUMU EKLE. 1. index.html (24 KB)
+- Full HTML5 structure
+- Semantic markup
+- SEO optimized
+- Accesibility features
+2. styles.css (18 KB)
+- Modern CSS3
+- CSS Variables
+- Responsive design
+- Clean code
+- Optimized selectors
+3. script.js (9 KB)
+- Interactive features
+- Smooth scroll
+- Form validation
+- Animations
+- Performance optimized
+
+✅ RESPONSIVE DESIGN:
+- Mobile First yaklaşım
+- Breakpoints: 480px, 768px, 1024px
+- Fluid typography (clamp)
+- Flexible grid layouts
+
+✅ PERFORMANCE:
+- CSS Variables (hızlı tema değişimi)
+- Intersection Observer (lazy loading)
+- Debounced scroll events
+- Optimized animations
+- No external dependencies
+
+✅ ACCESSIBILITY:
+- Semantic HTML5 tags
+- ARIA labels hazır
+- Keyboard navigation support
+- High contrast colors
+- Focus states
+
+✅ SEO:
+- Meta tags structure
+- Heading hierarchy (H1-H6)
+- Alt attributes for images
+- Internal linking
+- Schema.org ready
+
+🎨 PRIMARY COLORS:
+┌──────────────┬──────────┬────────────────────────────┐
+│ Renk │ Hex Code │ Kullanım │
+├──────────────┼──────────┼────────────────────────────┤
+│ Dark Gray │ #2f3234 │ Header, Footer, Headings │
+│ Green │ #00cc33 │ Buttons, Icons, Highlights │
+│ Yellow │ #ffde02 │ Badges, Special elements │
+│ White │ #ffffff │ Background, Text on dark │
+└──────────────┴──────────┴────────────────────────────┘
+
+🎨 NEUTRAL COLORS:
+- Gray 50: #f9fafb (Light backgrounds)
+- Gray 100: #f3f4f6 (Card backgrounds)
+- Gray 200: #e5e7eb (Borders)
+- Gray 300: #d1d5db (Secondary text)
+- Gray 600: #4b5563 (Body text)
+- Gray 700: #374151 (Headings)
+- Gray 900: #111827 (Primary text)
+
+================================================================================
+BÖLÜM 5: JAVASCRIPT ÖZELLİKLERİ
+================================================================================
+
+✅ INTERACTIVITY:
+1. Smooth Scroll Navigation
+- Tüm anchor link'lerde aktif
+- Offset: 200px (header için)
+
+2. Active Link Detection
+- Scroll sırasında otomatik güncelleme
+- Intersection Observer kullanımı
+
+3. Form Validation & Submission
+- Required field checking
+- Email format validation
+- Success/Error notifications
+
+4. Stats Counter Animation
+- Scroll-triggered animation
+- Duration: 2 seconds
+- Easing function included
+
+5. Scroll-to-Top Button
+- 300px scroll'dan sonra görünür
+- Smooth scroll back to top
+
+6. Mobile Menu Toggle
+- Hamburger menu icon
+- Slide animation
+- Touch-friendly
+
+✅ NOTIFICATION SYSTEM:
+- Success messages (green)
+- Error messages (red)
+- Info messages (blue)
+- Auto-dismiss after 5 seconds
+- Slide-in/out animations
+
+================================================================================
+BÖLÜM 6: FORM ENTEGRASYONU
+================================================================================
+
+📧 CONTACT FORM FIELDS:
+
+┌──────────────────┬──────────────┬────────────────────────────────────┐
+│ Field │ Type │ Validation │
+├──────────────────┼──────────────┼────────────────────────────────────┤
+│ Ad Soyad │ text │ Required, min 2 characters │
+│ Telefon │ tel │ Optional, Turkish format │
+│ E-posta │ email │ Required, email format │
+│ Konu │ text │ Optional │
+│ Mesaj │ textarea │ Required, min 10 characters │
+└──────────────────┴──────────────┴────────────────────────────────────┘
+
+
+📸 IMAGES:
+- WebP format kullan (JPEG'den %30 küçük)
+- Responsive srcset ekle
+- Lazy loading aktif (zaten var)
+- Compress with TinyPNG or Squoosh
+
+⚡ PERFORMANCE:
+- CSS minify: styles.css → styles.min.css
+- JS minify: script.js → script.min.js
+- HTML minify: index.html → index.min.html
+- Gzip/Brotli compression aktif et
+
+🔒 SECURITY:
+- HTTPS aktif et
+- CSP header ekle
+- Form token protection
+- reCAPTCHA ekle (spam koruması)
+
+📱 MOBILE:
+- Touch target sizes (min 44x44px)
+- Swipe gestures ekle
+- Pull-to-refresh
+- Bottom navigation (mobile menu)
+□ Görselleri ekle (product images, hero background)
+□ Logo dosyasını yerleştir
+□ İletişim bilgilerini güncelle
+□ Blog içerikleri ekle
+□ FAQ section doldur
+□ Partner logoları ekle
+□ Multi-language support (EN, DE, RU)
+□ Google Analytics kurulumu
+□ Facebook Pixel ekle
+□ Email marketing entegrasyonu
+□ E-commerce functionality
+□ User authentication
+□ Admin dashboard
+□ CRM entegrasyonu
+eski Automation dosyasını silip build kontrolü yapıyorum.
+
+
+4 Tools Called
+Yaptık! Otomasyon bölümü tamamen kaldırıldı, yerine gerçekçi içerikli bir Blog bölümü eklendi.
+
+Yapılanlar:
+
+Otomasyon bölümü silindi
+Yeni Blog bölümü eklendi - 6 gerçekçi makale ile (Tente bakımı, Pergola temizliği, Rolling Roof, BioClimatic, Cam Tavan, Kasetli Tente)
+Kategori filtresi - Tümü, Bakım & Temizlik, Pergola, Rolling Roof vb. seçenekleriyle çalışıyor
+Öne çıkan yazı büyük kartla, geri kalanlar 3’lü grid ile listeleniyor
+Site renkleri ile tam uyumlu (#2f3234 koyu, #00cc33 yeşil, sarı badgeler)
+Version 10
+
+PERGOLA ROLLİNGROOF BOLUMUNU " Pergola RollingRoof BioClimatic ZipPerde Tente olarak revıze et
+
+Readdy
+10:17 PM
+Önce ilgili bölümü bulayım.
+
+File Read
+src/pages/home/components/Services.tsx
+Hangi dosyalarda “Pergola RollingRoof” geçiyor, hepsine bakayım.
+
+Grep Search Completed
+Grep "Pergola.*Rolling|RollingRoof|Rolling Roof"
+Tüm dosyalarda “Pergola RollingRoof BioClimatik Tente” → “Pergola RollingRoof BioClimatic ZipPerde Tente” olarak güncelleyeyim. Hepsini aynı anda yapıyorum!
+
+
+12 Tools Called
+Harika, tüm dosyalar güncellendi! Build kontrolü yapıyorum.
+
+All done!
+Tertemiz! Her yerde güncellendi, hiçbir yer kaçmadı.
+
+Yapılan değişiklikler:
+
+22 yerde “Pergola RollingRoof BioClimatik Tente” → “Pergola RollingRoof BioClimatic ZipPerde Tente” olarak güncellendi
+Güncellenen dosyalar: Hero, Services, Process, Portfolio, FAQ, Contact, Footer, FormsSection, PriceCalculator, Testimonials, Referanslar sayfası
+
+Blog bölümündeki "Rolling Roof" kategori adını da "RollingRoof" olarak siteyle uyumlu hale getir. Blog bölümündeki "Rolling Roof" kategori adını da "RollingRoof" olarak siteyle uyumlu hale getir. Hizmetler bölümüne ZipPerde için ayrı bir kart ekle. Portföy sayfasına ZipPerde kategorisi ekle.
+Üç işi birden hallediyorum, dosyalara bakayım!
+
+File Read
+src/pages/home/components/Blog.tsx
+Tamam, 3 işi aynı anda hallediyorum!
+
+
+3 Tools Called
+Now let me update the tags for the RollingRoof post, add the ZipPerde blog post, update Services.tsx and portfolio files all at once.
+
+
+2 Tools Called
+Şimdi Services.tsx’e ZipPerde kartı ekleyeyim, grid’i de 4’e çıkarıyorum.
+
+
+2 Tools Called
+Şimdi portföy sayfasına ZipPerde kategorisi ve örnek proje ekleyelim.
+
+
+2 Tools Called
+Tüm değişiklikler tamam, build kontrol ediyorum.
+
+All done!
+Her şey tertemiz çalışıyor! İşte yapılanların özeti:
+
+1. Blog Bölümü — “Rolling Roof” → “RollingRoof”
+
+Kategori adı, başlık ve taglar güncellendi
+Listeye ZipPerde kategorisi eklendi
+ZipPerde için yeni blog yazısı eklendi (“ZipPerde Sistemlerinde UV Koruması”)
+2. Hizmetler Bölümü — ZipPerde Kartı
+
+“ZipPerde Temizlik & Bakım” başlıklı yeni kart eklendi (ray bakımı, fermuar kontrolü, koruyucu uygulama)
+Grid 3’lü → 4’lü yapıya geçirildi (tablet’te 2x2, masaüstünde 4’lü sıra)
+3. Portföy Sayfası — ZipPerde Kategorisi
+
+Filtre butonlarına “ZipPerde Temizlik” eklendi
+“Çankaya Residence ZipPerde Temizliği” örnek projesi eklendi
+Portföy sayfasındaki kategori buton renklerini ZipPerde için ayırt edici bir renkle özelleştir
+Ana sayfadaki hizmetler kısmına ZipPerde hakkında kısa bir "Ne İşe Yarar?" açıklama bloğu ekle
+FAQ bölümüne ZipPerde ile ilgili soru-cevap ekle

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="PergoClean - Toz Yapı'nın yeni nesil temizlik sistemi çok yakında yayında!"/>
+<meta name="theme-color" content="#0d0118"/>
+<title>PergoClean - Çok Yakında | Toz Yapı Teknolojileri</title>
+<style>
+:root{
+  --bg:#0d0118;
+  --bg2:#1a0524;
+  --purple:#8b5cf6;
+  --purple2:#a78bfa;
+  --pink:#ec4899;
+  --cyan:#06b6d4;
+  --text:#e1e1e1;
+  --text2:#9ca3af;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;overflow:hidden;min-height:100vh}
+
+/* Animated Background */
+.bg-animation{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);animation:float 20s infinite}
+.orb1{width:600px;height:600px;background:rgba(139,92,246,.15);top:-20%;left:-10%;animation-delay:0s}
+.orb2{width:500px;height:500px;background:rgba(236,72,153,.1);bottom:-10%;right:-10%;animation-delay:7s}
+.orb3{width:400px;height:400px;background:rgba(6,182,212,.08);top:40%;right:20%;animation-delay:14s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(50px,-50px) scale(1.1)}50%{transform:translate(-30px,30px) scale(.9)}75%{transform:translate(40px,20px) scale(1.05)}}
+
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(139,92,246,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.03) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 30s linear infinite}
+@keyframes gridMove{to{background-position:60px 60px}}
+
+.particles{position:absolute;inset:0}
+.particle{position:absolute;width:4px;height:4px;background:rgba(139,92,246,.4);border-radius:50%;animation:rise 15s infinite}
+.particle:nth-child(1){left:10%;animation-delay:0s}
+.particle:nth-child(2){left:30%;animation-delay:3s}
+.particle:nth-child(3){left:50%;animation-delay:6s}
+.particle:nth-child(4){left:70%;animation-delay:9s}
+.particle:nth-child(5){left:90%;animation-delay:12s}
+@keyframes rise{0%,100%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px) scale(1);opacity:0}}
+
+/* Main Content */
+.container{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;z-index:10}
+
+.logo{margin-bottom:3rem;text-align:center}
+.logo-icon{width:100px;height:100px;background:linear-gradient(135deg,var(--purple),var(--pink));border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:3rem;margin:0 auto 1.5rem;box-shadow:0 0 60px rgba(139,92,246,.4),0 0 100px rgba(236,72,153,.2);animation:pulse 3s ease infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 60px rgba(139,92,246,.4),0 0 100px rgba(236,72,153,.2)}50%{box-shadow:0 0 100px rgba(139,92,246,.6),0 0 150px rgba(236,72,153,.4)}}
+.logo h1{font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--purple2),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
+.logo p{font-size:1rem;color:var(--text2);letter-spacing:.2em;text-transform:uppercase}
+
+.badge{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.4rem;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);border-radius:50px;font-size:.8rem;font-weight:700;color:var(--purple2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2rem;animation:badgePulse 2s infinite}
+@keyframes badgePulse{0%,100%{box-shadow:0 0 0 0 rgba(139,92,246,.4)}50%{box-shadow:0 0 0 15px rgba(139,92,246,0)}}
+
+.message{text-align:center;max-width:700px;margin-bottom:3rem}
+.message h2{font-size:clamp(2rem,4vw,3.5rem);font-weight:900;color:#fff;margin-bottom:1.5rem;line-height:1.1}
+.message h2 span{background:linear-gradient(135deg,var(--cyan),var(--purple2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.message p{font-size:1.2rem;color:var(--text2);line-height:1.8}
+
+/* Countdown Timer */
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:3rem;max-width:600px}
+.countdown-item{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);border-radius:16px;padding:2rem 1.5rem;text-align:center;backdrop-filter:blur(10px);transition:all .3s}
+.countdown-item:hover{transform:translateY(-5px);background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.4)}
+.countdown-num{font-size:3.5rem;font-weight:900;background:linear-gradient(135deg,var(--purple2),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;display:block;margin-bottom:.5rem}
+.countdown-label{font-size:.8rem;color:var(--text2);text-transform:uppercase;letter-spacing:.15em}
+
+/* Progress Bar */
+.progress-container{width:100%;max-width:600px;margin-bottom:3rem}
+.progress-label{display:flex;justify-content:space-between;font-size:.85rem;color:var(--text2);margin-bottom:.75rem}
+.progress-bar{height:8px;background:rgba(139,92,246,.2);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--pink),var(--cyan));border-radius:10px;animation:progressGrow 2s ease-out;width:0}
+@keyframes progressGrow{to{width:73%}}
+
+/* Features Preview */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:900px;margin-bottom:3rem}
+.feature{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);border-radius:16px;padding:1.5rem;transition:all .3s}
+.feature:hover{transform:translateY(-5px);background:rgba(139,92,246,.12);border-color:rgba(139,92,246,.3)}
+.feature-icon{font-size:2.5rem;margin-bottom:1rem}
+.feature h3{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.5rem}
+.feature p{font-size:.9rem;color:var(--text2);line-height:1.6}
+
+/* Email Signup */
+.signup{width:100%;max-width:500px;margin-bottom:2rem}
+.signup-form{display:flex;gap:1rem}
+.signup-input{flex:1;padding:1rem 1.5rem;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.3);border-radius:50px;color:#fff;font-size:.95rem;transition:all .3s}
+.signup-input:focus{outline:none;border-color:var(--purple);background:rgba(139,92,246,.15)}
+.signup-btn{padding:1rem 2rem;background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;font-weight:700;font-size:.9rem;border-radius:50px;border:none;cursor:pointer;transition:all .3s;white-space:nowrap}
+.signup-btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(139,92,246,.4)}
+
+/* Social Links */
+.social{display:flex;gap:1rem;margin-bottom:2rem}
+.social-link{width:50px;height:50px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;text-decoration:none;color:var(--text2);transition:all .3s}
+.social-link:hover{background:rgba(139,92,246,.2);border-color:var(--purple);color:var(--purple2);transform:translateY(-3px)}
+
+/* Footer */
+.footer{text-align:center;color:var(--text2);font-size:.85rem}
+.footer a{color:var(--purple2);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+
+/* Notify Modal */
+.modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:1000;padding:2rem}
+.modal.open{display:flex}
+.modal-content{background:linear-gradient(135deg,var(--bg2),var(--bg));border:1px solid rgba(139,92,246,.3);border-radius:24px;padding:3rem;max-width:450px;width:100%;text-align:center;position:relative}
+.modal-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--text2);font-size:1.5rem;cursor:pointer}
+.modal-icon{font-size:4rem;margin-bottom:1.5rem}
+.modal h3{font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:1rem}
+.modal p{color:var(--text2);margin-bottom:1.5rem;line-height:1.6}
+
+@media(max-width:768px){
+  .countdown{grid-template-columns:repeat(2,1fr);gap:1rem}
+  .countdown-num{font-size:2.5rem}
+  .signup-form{flex-direction:column}
+  .features{grid-template-columns:1fr}
+  .logo-icon{width:80px;height:80px;font-size:2.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Background Animation -->
+<div class="bg-animation">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="grid"></div>
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="logo">
+    <div class="logo-icon">✨</div>
+    <h1>PergoClean</h1>
+    <p>Toz Yapı Teknolojileri</p>
+  </div>
+
+  <div class="badge">🚀 Yapım Aşamasında</div>
+
+  <div class="message">
+    <h2>Devrim Niteliğinde<br/><span>Temizlik Sistemi</span> Çok Yakında!</h2>
+    <p>Pergola, panjur ve kepenk sistemleriniz için akıllı, otomatik ve çevre dostu temizlik çözümü. Hayatınızı kolaylaştıracak yenilik çok yakında sizlerle.</p>
+  </div>
+
+  <!-- Countdown Timer -->
+  <div class="countdown" id="countdown">
+    <div class="countdown-item">
+      <span class="countdown-num" id="days">00</span>
+      <span class="countdown-label">Gün</span>
+    </div>
+    <div class="countdown-item">
+      <span class="countdown-num" id="hours">00</span>
+      <span class="countdown-label">Saat</span>
+    </div>
+    <div class="countdown-item">
+      <span class="countdown-num" id="minutes">00</span>
+      <span class="countdown-label">Dakika</span>
+    </div>
+    <div class="countdown-item">
+      <span class="countdown-num" id="seconds">00</span>
+      <span class="countdown-label">Saniye</span>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-label">
+      <span>Geliştirme Durumu</span>
+      <span id="progress-percent">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- Features Preview -->
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">🤖</div>
+      <h3>Otomatik Temizlik</h3>
+      <p>Zamanlanmış temizlik programları ile sisteminiz her zaman tertemiz.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💧</div>
+      <h3>Su Tasarrufu</h3>
+      <p>Akıllı su yönetimi ile %70'e varan tasarruf sağlayın.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📱</div>
+      <h3>Mobil Kontrol</h3>
+      <p>Telefonunuzdan sisteminizi izleyin ve kontrol edin.</p>
+    </div>
+  </div>
+
+  <!-- Email Signup -->
+  <div class="signup">
+    <form class="signup-form" onsubmit="handleSignup(event)">
+      <input type="email" class="signup-input" placeholder="Erken erişim için e-posta adresiniz" required/>
+      <button type="submit" class="signup-btn">Bilgi Al</button>
+    </form>
+  </div>
+
+  <!-- Social Links -->
+  <div class="social">
+    <a href="https://instagram.com/toz.solutions" target="_blank" class="social-link">📸</a>
+    <a href="https://wa.me/905367731404" target="_blank" class="social-link">💬</a>
+    <a href="mailto:merhaba@tozyapi.com.tr" class="social-link">✉️</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>&copy; 2026 <a href="#">Toz Yapı Teknolojileri</a>. Tüm hakları saklıdır.</p>
+    <p style="margin-top:.5rem">Ankara · Bilkent Center AVM</p>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-icon">🎉</div>
+    <h3>Teşekkürler!</h3>
+    <p>PergoClean hakkında ilk bilgiyi alacak siz olacaksınız. Sizi erken erişim listesine ekledik!</p>
+  </div>
+</div>
+
+<script>
+// Countdown Timer (2 aylık geri sayım)
+const launchDate = new Date();
+launchDate.setDate(launchDate.getDate() + 60); // 60 gün sonra
+
+function updateCountdown(){
+  const now = new Date().getTime();
+  const distance = launchDate - now;
+  
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+  document.getElementById('days').textContent = String(days).padStart(2,'0');
+  document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+  document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
+  
+  if(distance < 0){
+    document.getElementById('countdown').innerHTML = '<div style="grid-column:1/-1;text-align:center;font-size:2rem;font-weight:900;color:var(--purple2)">🎉 YAYINDAYIZ! 🎉</div>';
+  }
+}
+
+// Progress Animation
+let progress = 0;
+const targetProgress = 73;
+const progressElement = document.getElementById('progress-fill');
+const percentElement = document.getElementById('progress-percent');
+
+function animateProgress(){
+  if(progress < targetProgress){
+    progress++;
+    progressElement.style.width = progress + '%';
+    percentElement.textContent = progress + '%';
+    setTimeout(animateProgress, 30);
+  }
+}
+
+// Form Handler
+function handleSignup(e){
+  e.preventDefault();
+  const email = e.target.querySelector('input').value;
+  console.log('Early access signup:', email);
+  document.getElementById('modal').classList.add('open');
+  e.target.reset();
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+}
+
+// Initialize
+updateCountdown();
+setInterval(updateCountdown, 1000);
+setTimeout(animateProgress, 500);
+
+// Particle animation enhancement
+document.addEventListener('mousemove',(e)=>{
+  const particles = document.querySelectorAll('.particle');
+  particles.forEach(p=>{
+    const rect = p.getBoundingClientRect();
+    const dx = e.clientX - rect.left;
+    const dy = e.clientY - rect.top;
+    p.style.transform = `translate(${dx/50}px, ${dy/50}px)`;
+  });
+});
+</script>
+</body>
+</html>

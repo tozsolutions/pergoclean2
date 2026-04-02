@@ -1,0 +1,770 @@
+PERGOCLEAN PIXEL-PERFECT FINAL CODE PACKAGE MASTER TODO
+QWEN CODE CLI UYGULAMA DOSYASI
+SÜRÜM: FINAL MASTER BRIEF
+AMAÇ: Bu dosya, aynı klasörde bulunan referans ekran görüntüleri, logo dosyaları ve diğer görsellerle birlikte çalışacak şekilde; PergoClean web sitesinin pixel-perfect, production-ready, Next.js + Vercel + GitHub deploy uyumlu final kod paketini üretmek için hazırlanmıştır.
+
+======================================================================
+0. GENEL GÖREV TANIMI
+======================================================================
+
+Bu görevde amaç:
+PergoClean için, kullanıcı tarafından sağlanan referans ekran görüntülerine mümkün olan en yüksek görsel sadakatle bağlı, profesyonel, gerçekçi, deploy-ready, SEO altyapısı hazır, form akışları ve n8n webhook entegrasyonlarına uygun, modern ama referans tasarımı birebir hissettiren bir Next.js web sitesi üretmektir.
+
+Bu dosya bir “özet” değildir.
+Bu dosya, Qwen Code CLI’ye verilecek detaylı uygulama talimatıdır.
+
+En kritik hedef:
+1. Referans görsellerdeki görünümü section section çözmek
+2. Tasarımı template gibi değil, reverse-engineering mantığında kurmak
+3. Placeholder mantığıyla geçiştirmemek
+4. Logo, spacing, kart radius, shadow, tipografi, görsel oranları ve CTA yerleşimini milimetrik ele almak
+5. Çıktıyı gerçek çalışan final kod paketine dönüştürmek
+
+Bu görev “yaklaşık benzer site” üretme görevi değildir.
+Bu görev “pixel-perfect’e maksimum yaklaşan profesyonel final teslim” görevidir.
+
+======================================================================
+1. GİRDİLER VE KLASÖR KURALI
+======================================================================
+
+Qwen Code CLI, çalışacağı klasörde aşağıdaki dosyaları var kabul etsin:
+
+1. PergoClean24_02.26_1.png
+   - Ana logo
+   - Navbar ve footer’da kullanılacak
+   - Navbar’da yaklaşık 58px yükseklik hissi korunacak
+
+2. PergoClean24_02.26_3.png
+   - İkincil logo
+   - Open Graph, sosyal medya kartları, bazı görsel alanlar veya marka kullanımı için kullanılabilir
+
+3. Kullanıcının sağladığı tüm ekran görüntüleri
+   - Her ekran görüntüsü gerçek referans section görüntüsüdür
+   - Bu görseller tasarım çözümlemesinde kaynak alınacaktır
+   - Her section için ilgili görsel kırpma, spacing, başlık oranı, buton konumu ve kart dizilimi bu görsellere göre kurulacaktır
+
+4. Aynı klasörde varsa diğer görseller
+   - Bunlar portfolio, blog, sosyal proof veya içerik alanlarında referans asset olarak kullanılabilir
+   - Ancak ana amaç ekran görüntülerindeki düzeni yeniden üretmektir
+
+Qwen, bu klasördeki görselleri okuyup:
+- hangi görsel hangi section’a ait
+- hangi section’da hangi görsel dili var
+- tekrar eden tasarım motifleri nelerdir
+bunları analiz ederek component yapısını kurmalıdır.
+
+Hiçbir noktada:
+“yerine rastgele stock görsel koydum ve geçtim”
+mantığına kaçılmayacak.
+
+======================================================================
+2. TEKNOLOJİ VE ÇIKTI HEDEFİ
+======================================================================
+
+Üretilecek proje:
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Vercel deploy uyumlu
+- GitHub push uyumlu
+- Environment variable yapısı hazır
+- n8n webhook route’ları hazır
+- SEO meta yapısı hazır
+- sitemap ve robots hazır
+- LocalBusiness schema hazır
+
+İstenen çıktı:
+- Tam çalışan proje klasörü
+- Düzenli component mimarisi
+- Temiz dosya yapısı
+- Final kod
+- README
+- .env.example
+- API route’ları
+- mobil responsive
+- production seviyesinde görsel disiplin
+
+Tasarım dili:
+- premium
+- temiz
+- güven veren
+- agency kalitesinde
+- ama referans tasarımı taklit etmek yerine “yeniden yorumlanmış” değil
+- olabildiğince referansın aynısı
+
+======================================================================
+3. BÖLÜM 1 — GLOBAL TASARIM SİSTEMİ VE PROJE İSKELETİ
+======================================================================
+
+3.1. YAPILACAKLAR
+- Next.js app router proje yapısını kur
+- src tabanlı düzen kullan
+- component klasörlerini mantıklı ayır
+- layout, home, forms, shared, lib, public yapısını net kur
+- global CSS ve Tailwind tasarım token’larını tanımla
+- typography, spacing, radius, shadow ve renk sistemi referans görsellerdeki agency hissine göre tanımlansın
+
+3.2. DOSYA YAPISI
+Kurulacak önerilen yapı:
+
+src/
+  app/
+    layout.tsx
+    page.tsx
+    blog/page.tsx
+    avrupa-standartlari/page.tsx
+    admin/page.tsx
+    api/
+      lead/
+        quote/route.ts
+        appointment/route.ts
+        photo/route.ts
+        contact/route.ts
+  components/
+    layout/
+      SiteHeader.tsx
+      SiteFooter.tsx
+      FloatingContact.tsx
+      Container.tsx
+      SectionHeading.tsx
+    forms/
+      LeadForm.tsx
+    home/
+      HeroSection.tsx
+      ValueHighlights.tsx
+      ServicesSection.tsx
+      WhyUsBlock.tsx
+      BeforeAfterSection.tsx
+      PricingSection.tsx
+      ReplacementVsCleaning.tsx
+      ProcessSection.tsx
+      PortfolioSection.tsx
+      DualLeadSection.tsx
+      BlogSection.tsx
+      SocialProofSection.tsx
+      FaqSection.tsx
+      ContactSection.tsx
+  lib/
+    site.ts
+    utils.ts
+  public/
+    assets/
+      logos/
+      references/
+      portfolio/
+      blog/
+      social/
+
+3.3. GLOBAL TASARIM TOKENLARI
+Aşağıdaki görsel mantık korunacak:
+
+Arka plan:
+- Ana sayfa açık, ferah, premium açık gri-beyaz zemin
+- Ana zemin tonu: #f6f8fc çevresi
+- Kartlar düz beyaz ama steril değil
+- bazı alanlarda soft glass / soft tint
+
+Ana başlık rengi:
+- Koyu lacivert / gece mavisi
+- yaklaşık: #0f1e42
+
+Vurgu renkleri:
+- turkuaz / petrol yeşili
+- canlı ama bağırmayan yeşil CTA
+- altın sarısı / amber vurgu
+- sıcak turuncu buton
+
+Radius:
+- küçük radius kullanılmayacak
+- premium görünüm için 24px–38px bandı ağırlıklı kullanılacak
+
+Shadow:
+- sert gölge yok
+- yayvan, aşağı düşen yumuşak shadow
+- section kartlarında lüks ama hafif hissiyat
+
+Tipografi:
+- Headline çok güçlü
+- tracking sıkı
+- hero’da ağır font
+- altın italik satır korunmalı
+- body metinleri açık gri ve rahat okunur
+
+3.4. ORTAK COMPONENTLER
+Qwen mutlaka şu ortak yapıları üretmeli:
+- Container
+- SectionHeading
+- LeadForm
+- SiteHeader
+- SiteFooter
+- FloatingContact
+
+3.5. BÖLÜM 1 CHECKLIST
+- [ ] Next.js proje ayağa kalkıyor mu
+- [ ] TypeScript hatasız mı
+- [ ] Tailwind kurulumu tam mı
+- [ ] Container standardı sabit mi
+- [ ] SectionHeading her yerde aynı dili taşıyor mu
+- [ ] renk, shadow, radius sistemi dağılmıyor mu
+- [ ] logo dosyaları doğru path ile kullanılıyor mu
+
+======================================================================
+4. BÖLÜM 2 — HERO + HEADER + ÜST DENEYİMİN BİREBİR KURULUMU
+======================================================================
+
+4.1. HEDEF
+Bu bölüm referans görsellerdeki en kritik üst alanı birebir hissettirmeli.
+
+4.2. HEADER / NAVBAR
+Yapılacaklar:
+- Fixed navbar kurulacak
+- yarı transparan beyaz arka plan
+- backdrop blur olacak
+- alt border hafif olacak
+- solda PergoClean24_02.26_1.png yer alacak
+- logo yüksekliği yaklaşık 58px hissi verecek
+- menü elemanları dengeli spacing ile yerleştirilecek
+- sağ tarafta WhatsApp CTA olacak
+- mobil menü de düzgün çalışacak
+
+Menü:
+- Hakkımızda
+- Hizmetlerimiz
+- Portfolio
+- Fiyat Hesaplama
+- Blog
+- SSS
+- İletişim
+
+Kesin not:
+- “Otomasyon” sekmesi olmayacak
+
+4.3. HERO ALANI
+Başlık birebir şu mantıkla:
+Pergola BioClimatic RollingRoof
+CamTavan ZipPerde Tente
+Profesyonel Temizlik
+
+Kurallar:
+- ilk iki satır beyaz, çok büyük, güçlü
+- “Profesyonel Temizlik” altın sarısı italik
+- satır kırılımı bozulmayacak
+- hero metni çok sıkışık olmayacak
+- CTA’lar iki adet olacak:
+  1. Ücretsiz Fiyat Teklifi Al
+  2. WhatsApp’tan Ulaş
+
+Alt açıklama şu anlama sadık kalmalı:
+Pergola RollingRoof BioClimatic CamTavan ZipPerde ve Tentelerinizde %85-90 oranında ilk günkü temizliğine ve hijyenik yeni görünümüne kavuşturuyoruz. Minimum maliyet, maksimum sonuç.
+
+4.4. KPI KUTULARI
+Hero altında 3 glassmorphism kutu:
+- 500+ Mutlu Müşteri
+- 2000+ Temizlenen Sistem
+- %95 Memnuniyet Oranı
+
+Kurallar:
+- blur arka plan
+- beyaz şeffaf kartlar
+- altın sarısı rakam
+- radius büyük
+- spacing ferah
+
+4.5. HERO GÖRSELİ
+- Referans ekran görüntüsündeki hero görselinin hissettirdiği kalite korunmalı
+- Kullanıcının klasörde verdiği ilgili hero görseli varsa onu kullan
+- yoksa mevcut görsellerden en uygun crop ile premium pergola / yaşam alanı hissi oluştur
+- dark overlay mutlaka olacak
+- metin okunabilirliği garanti edilecek
+
+4.6. BÖLÜM 2 CHECKLIST
+- [ ] Navbar referans hissine yakın mı
+- [ ] Logo boyutu doğru mu
+- [ ] Hero başlık satır kırılımı doğru mu
+- [ ] Altın italik vurgu doğru çalışıyor mu
+- [ ] Butonların eni, yüksekliği, radius’u premium mu
+- [ ] KPI kutuları ucuz görünmüyor mu
+- [ ] Hero yüksekliği ekranı dolduruyor mu
+- [ ] Mobilde hero çökmeden küçülüyor mu
+
+======================================================================
+5. BÖLÜM 3 — ORTA GÖVDE: AVANTAJLAR + HİZMETLER + DEĞER BLOĞU + BEFORE/AFTER
+======================================================================
+
+5.1. AVANTAJ KARTLARI
+Hero sonrasında 4 adet avantaj kartı gelecek:
+- %70-80 Tasarruf
+- Aynı Gün İşlem
+- Söküm Yok
+- %80-90 Yenilenme
+
+Kurallar:
+- beyaz kartlar
+- temiz premium yüzey
+- kısa güçlü başlık
+- gri açıklama
+- 4 kolon desktop
+- 2 kolon tablet
+- 1 kolon mobile
+
+5.2. HİZMETLER GRID
+Hizmetler alanı kurulacak:
+- Derin Temizlik
+- ZipPerde Temizlik & Bakım
+- LED Değişim & Renklendirme
+- Bakım ve Teknik Destek
+
+Her kartta:
+- üstte ikon veya yumuşak ikon kutusu
+- güçlü başlık
+- sade paragraf
+- “Detaylı Bilgi →” gibi küçük CTA
+
+5.3. KOYU YEŞİL / TURKUAZ DEĞER BLOĞU
+Bu blok çok önemli:
+- büyük yatay premium gradient section
+- “Neden PergoClean?” mantığı
+- 2 kolonlu avantaj listesi
+- check ikonları
+- beyaz başlık ve metinler
+- çok güçlü ama bağırmayan satış dili
+
+Örnek avantajlar:
+- %70-80 Tasarruf
+- Özel Kimyasal ve Kontrollü Uygulama
+- Yağ, İs, Duman ve Buhar Katmanlarında Etki
+- Yapı Koruması ve Yerinde Uygulama
+
+5.4. BEFORE / AFTER BÖLÜMÜ
+3 kolonlu dönüşüm kartları kurulacak:
+- her kartta önce / sonra mantığı
+- etiketler: ÖNCE / SONRA
+- güçlü görsel alan
+- alt bilgi kısa
+
+Slider şart değil ama:
+- kartın görsel dili referanstaki dönüşüm mantığını vermeli
+- istenirse CSS/JS before-after slider versiyonu da opsiyonel eklenebilir
+
+5.5. BÖLÜM 3 CHECKLIST
+- [ ] 4 avantaj kartı düzgün hizalı mı
+- [ ] Hizmet kartlarının iç spacing’i doğru mu
+- [ ] Turkuaz değer bloğu güçlü görünüyor mu
+- [ ] before/after kartları amatör görünmüyor mu
+- [ ] Section başlıkları ortak tipografiyi koruyor mu
+- [ ] Kart radius’ları tutarlı mı
+- [ ] Desktop ve mobile geçişlerde ritim bozulmuyor mu
+
+======================================================================
+6. BÖLÜM 4 — SATIŞ MAKİNESİ: FİYAT HESAPLAMA + DEĞİŞİM VS TEMİZLİK + SÜREÇ
+======================================================================
+
+6.1. FİYAT HESAPLAMA SECTION
+Bu alan iki parçalı büyük premium card olarak yapılacak.
+
+Sol panel:
+- koyu lacivert gradient
+- beyaz heading
+- altın sarısı büyük istatistik rakamları
+- metin açık beyaz opaklıkta
+
+Sağ panel:
+- beyaz / hafif sıcak arka plan
+- üstte fiyat bilgi şeridi
+- altta teklif formu
+
+Fiyat bilgileri:
+- Hafif kirlilik 200 TL/m²
+- Orta kirlilik 300 TL/m²
+- Ağır / kurumsal hizmet 400 TL/m²
+
+Form alanları:
+- Genişlik (m)
+- Uzunluk (m)
+- Kirlilik Seviyesi
+- Ad Soyad
+- Telefon
+- E-posta
+
+Form davranışı:
+- n8n webhook’a hazır olacak
+- gönderimde API route’a JSON gönderilecek
+
+6.2. DEĞİŞİM VS TEMİZLİK KARŞILAŞTIRMA BLOĞU
+Bu senin en önemli satış silahın.
+Bu bölüm çok güçlü yapılmalı.
+
+Sol kolon:
+Kumaş Değişimi
+- 50 m² için ortalama 70.000 – 90.000 TL maliyet
+- 1 gün söküm
+- 1 gün kumaş işlemi
+- 1 gün tekrar montaj
+- toplam 3 gün iş kaybı / verimsizlik
+- ekstra işçilik ve ciro kaybı
+
+Sağ kolon:
+PergoClean çözümü
+- yerinde işlem
+- %70-80 tasarruf
+- çoğu iş aynı gün
+- %80-90 yenilenme potansiyeli
+- iş kaybı minimum
+
+Kurallar:
+- sol taraf hafif kırmızı tonda kayıp hissi vermeli
+- sağ taraf güven ve çözüm hissi vermeli
+- iki kolon da güçlü card tasarımında olmalı
+
+6.3. NASIL ÇALIŞIYORUZ
+4 adımlı süreç kartları:
+1. İletişim
+2. Keşif ve Fiyatlandırma
+3. Yerinde Temizlik
+4. Teslim
+
+Tasarım:
+- ortalanmış başlık
+- büyük numaralı yuvarlak ikon
+- beyaz kartlar
+- temiz agency görünüm
+
+6.4. BÖLÜM 4 CHECKLIST
+- [ ] Pricing kartı referans hissi veriyor mu
+- [ ] Sol koyu panel yeterince güçlü mü
+- [ ] Fiyat şeridi okunaklı mı
+- [ ] Form rahat ve güven veren mi
+- [ ] Değişim vs temizlik section’ı en güçlü satış alanı gibi duruyor mu
+- [ ] Süreç kartları basit ama premium mu
+- [ ] Butonlar aynı tasarım sistemine bağlı mı
+
+======================================================================
+7. BÖLÜM 5 — ALT GÖVDE: PORTFOLIO + FORM ÇİFTLİSİ + BLOG + SOSYAL KANIT + SSS + İLETİŞİM + FOOTER
+======================================================================
+
+7.1. PORTFOLIO
+Kurulacak yapı:
+- üstte başlık ve filtre chip’leri
+- altta 4 kolon proje kartları
+- kart görseli büyük
+- alt metin kısa
+- genel görünüm düzenli ve güven verici
+
+Filtre örnekleri:
+- Tümü
+- Pergola Temizlik
+- Tente Temizlik
+- Bioclimatic Temizlik
+- RollingRoof Temizlik
+- ZipPerde Temizlik
+- LED Değişim
+
+7.2. FOTOĞRAF GÖNDER + RANDEVU ÇİFT FORM ALANI
+İki yan yana büyük kart:
+Sol:
+- Fotoğraf Gönderin
+- açık mavi ton
+- ön değerlendirme mantığı
+
+Sağ:
+- Randevu Alın
+- açık yeşil ton
+- tarih ve saat seçimi
+
+Fotoğraf formu:
+- Ad Soyad
+- Telefon
+- E-posta
+- Sistem / kumaş durumu notu
+
+Randevu formu:
+- Ad Soyad
+- Telefon
+- E-posta
+- Tarih
+- Saat
+- Adres bilgisi
+
+Not:
+Gerçek dosya yükleme istenirse ikinci fazda Blob veya S3 bağlanabilir.
+Ama lead toplama akışı şimdiden hazır olacak.
+
+7.3. BLOG
+Bir featured blog alanı + grid kartlar
+İçerik başlıkları SEO odaklı
+Premium editorial hissi olmalı
+Görsel crop’lar düzenli olmalı
+Kartlar cheap görünmemeli
+
+7.4. TESTIMONIAL / INSTAGRAM
+3 yorum kartı
+- yıldız satırı
+- kısa yorum
+- isim ve lokasyon
+
+Altında Instagram preview grid
+- 4 kutulu veya daha geniş sosyal grid
+- takip butonu
+
+7.5. SSS
+Accordion yapısı
+- büyük radius
+- beyaz kutular
+- temiz spacing
+- summary ve content ayrımı net
+
+7.6. İLETİŞİM
+Başlık + CTA sıra
+Altında 2 kolon:
+- solda iletişim formu
+- sağda iletişim bilgileri ve harita alanı
+
+İletişim bilgileri:
+Adres:
+Timko İş Merkezi, Macun Mahallesi 177. Cadde V8 Kat 1, Yenimahalle/Ankara
+
+Telefon / WhatsApp:
++90 536 773 14 04
++90 530 955 00 28
+
+E-posta:
+Merhaba@pergoclean.com.tr
+
+Web:
+www.pergoclean.com.tr
+
+7.7. FOOTER
+Koyu turkuaz gradient footer
+Bölümler:
+- logo + kısa marka metni
+- hizmetler
+- kurumsal
+- iletişim
+- altta copyright
+
+7.8. BÖLÜM 5 CHECKLIST
+- [ ] Portfolio kartları tutarlı mı
+- [ ] çift form alanı conversion odaklı mı
+- [ ] blog bölümü agency görünümünde mi
+- [ ] testimonial kartları güven veriyor mu
+- [ ] SSS rahat okunuyor mu
+- [ ] iletişim bölümü güçlü kapanış yapıyor mu
+- [ ] footer ucuz görünmüyor mu
+
+======================================================================
+8. FORM VE API ENTEGRASYONLARI
+======================================================================
+
+8.1. ROUTE’LAR
+Aşağıdaki API route’lar oluşturulacak:
+- /api/lead/quote
+- /api/lead/appointment
+- /api/lead/photo
+- /api/lead/contact
+
+8.2. DAVRANIŞ
+Her route:
+- JSON request alacak
+- zorunlu alan kontrolü yapacak
+- webhook URL varsa POST edecek
+- düzgün response dönecek
+
+8.3. ENV DEĞİŞKENLERİ
+.env.example içinde:
+NEXT_PUBLIC_SITE_URL=
+NEXT_PUBLIC_COMPANY_NAME=PergoClean
+QUOTE_WEBHOOK_URL=
+APPOINTMENT_WEBHOOK_URL=
+PHOTO_WEBHOOK_URL=
+CONTACT_WEBHOOK_URL=
+NOTIFICATION_EMAIL=
+WHATSAPP_PRIMARY=
+WHATSAPP_SECONDARY=
+ADMIN_PANEL_PASSWORD=
+
+8.4. LEADFORM BİLEŞENİ
+Tek ortak form bileşeni kullanılacak
+- input
+- select
+- textarea
+- loading state
+- success message
+- error message
+
+8.5. CHECKLIST
+- [ ] form submit çalışıyor mu
+- [ ] zorunlu alan doğrulaması var mı
+- [ ] route’lar tip güvenli mi
+- [ ] webhook boşsa uygulama çökmeden devam ediyor mu
+- [ ] kullanıcı dostu mesajlar dönüyor mu
+
+======================================================================
+9. SEO, META, SCHEMA, SITEMAP
+======================================================================
+
+9.1. SEO HEDEFİ
+Arama niyeti:
+- pergola temizliği ankara
+- zip perde temizliği ankara
+- cam tavan temizliği ankara
+- bioclimatic pergola temizliği
+- rolling roof temizliği
+- tente temizliği ankara
+- pergola temizliği antalya
+- pergola led değişimi
+- pergola kumaş temizliği
+
+9.2. META
+Layout içinde:
+- title template
+- description
+- keywords
+- OG
+- Twitter card
+- canonical
+
+9.3. SCHEMA
+LocalBusiness schema eklenecek:
+- name
+- image
+- url
+- telephone
+- email
+- address
+- areaServed
+- sameAs
+- description
+
+9.4. SITEMAP / ROBOTS
+- sitemap.ts
+- robots.ts
+
+9.5. CHECKLIST
+- [ ] metadata base doğru mu
+- [ ] OG görseli ikincil logo veya uygun görsel ile tanımlı mı
+- [ ] schema parse edilebilir mi
+- [ ] sitemap çalışıyor mu
+- [ ] robots doğru mu
+
+======================================================================
+10. RESPONSIVE VE GÖRSEL İNCE İŞÇİLİK
+======================================================================
+
+10.1. RESPONSIVE KIRILIMLAR
+Desktop:
+- 4 kolonlu gridler aktif
+- geniş hero
+- CTA’lar yan yana
+
+Tablet:
+- 2 kolonlu grid
+- spacing korunmalı
+- hero kırılmamalı
+
+Mobile:
+- form alanları tek kolon
+- kartlar tek kolon
+- navbar mobil menü ile çözülmeli
+- hero başlık küçülse de etkisini kaybetmemeli
+
+10.2. GÖRSEL FINE-TUNE
+Qwen aşağıdakileri referans ekran görüntülerle tek tek karşılaştırmalı:
+- padding
+- margin
+- border-radius
+- shadow blur
+- text satır kırılımı
+- görsel crop oranı
+- CTA genişliği
+- KPI kutu yüksekliği
+
+10.3. PLACEHOLDER YASAĞI
+Rastgele placeholder mantığı yasak.
+Klasörde bulunan gerçek referans görseller mümkün olduğunca kullanılmalı.
+Gerekirse public/assets altında düzenli klasörlenmeli.
+
+10.4. CHECKLIST
+- [ ] desktop görünüm premium mu
+- [ ] mobile’da section’lar dağılmıyor mu
+- [ ] görseller orantısız crop edilmiyor mu
+- [ ] header ve hero mobilde bozulmuyor mu
+- [ ] footer mobile’da düzgün stack oluyor mu
+
+======================================================================
+11. DEPLOY, README VE FINAL TESLİM
+======================================================================
+
+11.1. README
+README içinde:
+- kurulum
+- dev çalıştırma
+- env ayarları
+- Vercel deploy
+- GitHub push
+- n8n webhook mantığı
+- ikinci faz önerileri
+
+11.2. VERCEL UYUMU
+- proje Vercel’de sorunsuz build olmalı
+- server route’lar uyumlu olmalı
+- env kullanımı temiz olmalı
+
+11.3. GITHUB UYUMU
+- temiz repo yapısı
+- gereksiz dosya yok
+- .gitignore doğru
+- build ve start scriptleri doğru
+
+11.4. FINAL TESLİM KRİTERİ
+Final çıktı verilmeden önce şu maddeler doğrulanmalı:
+- proje build alıyor mu
+- type hatası var mı
+- import path kırık mı
+- tüm componentler page’e bağlandı mı
+- logolar doğru görünüyor mu
+- formlar submit oluyor mu
+- hero görseli çalışıyor mu
+- SEO dosyaları mevcut mu
+- README var mı
+- .env.example var mı
+
+======================================================================
+12. EN KRİTİK SON TALİMATLAR
+======================================================================
+
+1. Bu proje “ortalama şık bir site” olarak yapılmayacak.
+2. Referans ekran görüntülerine section section bakılacak.
+3. Her section için görsel ritim yeniden üretilecek.
+4. Kart radius’ları ve spacing premium tutulacak.
+5. Hero alanı zayıf bırakılmayacak.
+6. Değişim vs temizlik karşılaştırma alanı satışın kalbi olarak ele alınacak.
+7. n8n entegrasyonu hazır ama sade tutulacak.
+8. Kod temiz, okunur, üretim kalitesinde olacak.
+9. Sonuç deploy-ready gerçek bir proje olacak.
+10. Kullanıcıyı tatmin etmeyen “yaklaşık benzedi” seviyesi kabul edilmeyecek.
+
+======================================================================
+13. FINAL UYGULAMA EMRİ
+======================================================================
+
+Şimdi bu klasördeki referans görselleri ve logo dosyalarını kullanarak:
+
+- pixel-perfect’e mümkün olan en yüksek seviyede yaklaşan
+- production-ready
+- Next.js + TypeScript + Tailwind
+- Vercel deploy uyumlu
+- GitHub uyumlu
+- SEO ve webhook altyapısı hazır
+- PergoClean markasına özel
+
+final çalışan proje kod paketini üret.
+
+Öncelik sırası:
+1. Tasarım birebirliği
+2. Kod kalitesi
+3. Responsive stabilite
+4. SEO omurgası
+5. Entegrasyon hazırlığı
+
+Bu görev tamamlandığında çıktı:
+gerçek çalışan final proje dosyaları olmalıdır.

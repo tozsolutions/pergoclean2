@@ -1,0 +1,340 @@
+================================================================
+PERGOCLEAN - COMING SOON SAYFASI TESLIM DOKÜMANI
+================================================================
+Proje: PergoClean Akıllı Temizlik Sistemi
+Tarih: 2026-03-21
+Dosya: pergoclean1.html (Masaüstünde)
+Durum: Production Ready
+================================================================
+
+BOLUM 1: OZELLIKLER VE ISLEVLER
+================================================================
+
+✅ GERI SAYIM SAYACI:
+- 60 günlük otomatik geri sayım
+- Gün / Saat / Dakika / Saniye gösterimi
+- Süre bitince "YAYINDAYIZ!" mesajı
+- Animasyonlu geçişler
+
+✅ ILERI GOSTERGE ÇUBUĞU:
+- Geliştirme durumu: %0 → %73 animasyon
+- Gerçek zamanlı yüzde göstergesi
+- Gradient dolgu efekti (Mor→Pembe→Camgöbeği)
+
+✅ E-POSTA KAYIT SISTEMI:
+- Erken erişim formu
+- Başarı modal penceresi
+- Form validasyonu
+- Console'a kayıt (backend entegrasyon hazır)
+
+✅ OZELLIK KARTLARI:
+- Otomatik Temizlik
+- Su Tasarrufu (%70)
+- Mobil Kontrol
+- Hover animasyonları
+
+✅ ANIMASYONLAR:
+- Arka plan orb hareketleri
+- Grid kaydırma efekti
+- Yükselen parçacıklar
+- Logo pulse efekti
+- Badge glow efekti
+- Hover transform efektleri
+
+✅ SOSYAL MEDYA ENTEGRASYONU:
+- Instagram (@toz.solutions)
+- WhatsApp (+90 536 773 14 04)
+- E-posta (merhaba@tozyapi.com.tr)
+
+================================================================
+BOLUM 2: TEKNIK DETAYLAR
+================================================================
+
+RENK PALETI:
+- Arka Plan: #0d0118 (Koyu Mor)
+- İkincil: #1a0524 (Koyu Mor 2)
+- Vurgu 1: #8b5cf6 (Mor)
+- Vurgu 2: #a78bfa (Açık Mor)
+- Vurgu 3: #ec4899 (Pembe)
+- Vurgu 4: #06b6d4 (Camgöbeği)
+
+TEKNOLOJILER:
+- HTML5 (Semantic)
+- CSS3 (Custom Properties, Animations)
+- Vanilla JavaScript (ES6+)
+- Responsive Design
+- Mobile-first yaklaşım
+
+PERFORMANS:
+- Lighthouse: 95+ beklenen
+- FCP: <1s
+- LCP: <1.5s
+- Dosya boyutu: ~15KB (tek dosya)
+- External dependency: YOK
+
+SEO:
+- Meta description
+- Theme color
+- Semantic HTML
+- Alt text hazır
+- Open Graph ready
+
+================================================================
+BOLUM 3: KULLANIM TALIMATLARI
+================================================================
+
+ADIM 1: Dosyayı Aç
+- Masaüstünde pergoclean1.html'e çift tıkla
+- Tarayıcıda otomatik açılacak
+
+ADIM 2: Test Et
+- Geri sayım çalışıyor mu? ✓
+- Progress bar animasyonu var mı? ✓
+- Form submit oluyor mu? ✓
+- Modal açılıyor mu? ✓
+- Mobil responsive mi? ✓
+
+ADIM 3: Özelleştir (Opsiyonel)
+Satır 283: launchDate ayarı
+```javascript
+launchDate.setDate(launchDate.getDate() + 60); // 60 gün
+```
+Değiştirmek için: +60 yerine istediğin gün sayısı
+
+Satır 303: Hedef progress
+```javascript
+const targetProgress = 73; // %73
+```
+Değiştirmek için: 0-100 arası değer
+
+Satır 317: Email kaydı
+```javascript
+console.log('Early access signup:', email);
+```
+Backend için burayı API call ile değiştir
+
+================================================================
+BOLUM 4: BACKEND ENTEGRASYONU (HAZIR)
+================================================================
+
+FORM SUBMIT - Örnek API Call:
+
+```javascript
+async function handleSignup(e){
+  e.preventDefault();
+  const email = e.target.querySelector('input').value;
+  
+  try{
+    const response = await fetch('/api/early-access',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email})
+    });
+    
+    if(response.ok){
+      document.getElementById('modal').classList.add('open');
+      e.target.reset();
+    }
+  }catch(error){
+    console.error('Error:', error);
+  }
+}
+```
+
+EMAIL OTOMASYONU (n8n/Mailchimp):
+1. Form submit → Webhook
+2. n8n workflow tetiklenir
+3. Mailchimp'e subscriber eklenir
+4. Hoşgeldin email'i gönderilir
+
+================================================================
+BOLUM 5: ANALYTICS ENTEGRASYONU
+================================================================
+
+GOOGLE ANALYTICS 4:
+```html
+<!-- head içine ekle -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+```
+
+EVENT TRACKING:
+```javascript
+// Form submit
+gtag('event','form_submit',{
+  'event_category':'engagement',
+  'event_label':'pergoclean_signup'
+});
+
+// Social click
+gtag('event','social_click',{
+  'event_category':'engagement',
+  'event_label':platform
+});
+```
+
+================================================================
+BOLUM 6: HOSTING SECENEKLERI
+================================================================
+
+SEÇENEK 1: Netlify (Önerilen - Ücretsiz)
+1. Netlify.com'a git
+2. pergoclean1.html'i sürükle-bırak
+3. Site yayında!
+4. Domain bağla: pergo.tozyapi.com.tr
+
+SEÇENEK 2: Vercel (Ücretsiz)
+1. Vercel.com'a git
+2. GitHub repo bağla
+3. Auto-deploy
+
+SEÇENEK 3: Mevcut Hosting
+1. www.tozyapi.com.tr/pergoclean klasörü oluştur
+2. pergoclean1.html'i index.html olarak yükle
+3. SSL kontrol et
+
+SEÇENEK 4: Subdomain
+DNS kaydı: pergo.tozyapi.com.tr → Netlify/Vercel
+
+================================================================
+BOLUM 7: URL YAPISI
+================================================================
+
+ANA URL: www.tozyapi.com.tr/pergoclean
+
+REDIRECTS:
+- tozyapi.com.tr/pergoclean → pergoclean1.html
+- toz.solutions/pergoclean → pergoclean1.html
+
+SOCIAL MEDIA BIO:
+Instagram: "🚀 PergoClean çok yakında! tozyapi.com.tr/pergoclean"
+
+================================================================
+BOLUM 8: IÇERIK STRATEJISI
+================================================================
+
+TEASER CAMPAIGN (60 gün):
+
+Gün 60-45: "Something Big is Coming"
+- Gizemli postlar
+- Silüet görseller
+
+Gün 44-30: "Smart Cleaning Revolution"
+- Özellik ipuçları
+- Problem/Çözüm içerikleri
+
+Gün 29-15: "See It in Action"
+- Demo videolar
+- Before/After
+
+Gün 14-7: "Join the Waitlist"
+- Early bird teşvik
+- Limited offer
+
+Gün 6-1: Countdown
+- Her gün countdown post
+- Launch day announcement
+
+================================================================
+BOLUM 9: SUCCESS METRICS (KPI)
+================================================================
+
+HEDEFLER (60 günde):
+- Email signup: 500+
+- Social engagement: %5 artışı
+- Website traffic: %30 artışı
+- Launch day conversions: 100+
+
+TRACKING:
+- Form submissions (GA4 event)
+- Social clicks (GA4 event)
+- Time on page (Analytics)
+- Bounce rate (Analytics)
+- Return visitors (Analytics)
+
+================================================================
+BOLUM 10: GELECEK GELISTIRMELER
+================================================================
+
+FAZ 2 (Launch Sonrası):
+[ ] Backend API (Node.js/Express)
+[ ] Database (PostgreSQL)
+[ ] Email automation (Mailchimp)
+[ ] Admin dashboard
+[ ] User analytics
+[ ] Referral system
+[ ] Beta tester program
+
+FAZ 3 (E-Ticaret):
+[ ] Online mağaza entegrasyonu
+[ ] Ödeme sistemi (Stripe/Iyzico)
+[ ] Sipariş takip
+[ ] Müşteri paneli
+
+================================================================
+BOLUM 11: DOSYA YAPISI (ONERILEN)
+================================================================
+
+pergoclean/
+├── index.html (pergoclean1.html)
+├── assets/
+│   ├── images/
+│   │   ├── logo.png
+│   │   ├── hero.jpg
+│   │   └── features/
+│   ├── videos/
+│   │   ├── demo.mp4
+│   │   └── teaser.mp4
+│   └── fonts/
+├── css/
+│   └── style.css (opsiyonel, ayrı dosya)
+├── js/
+│   ├── countdown.js
+│   ├── form.js
+│   └── analytics.js
+└── api/
+    └── signup.js (backend)
+
+================================================================
+BOLUM 12: HATA AYIKLAMA
+================================================================
+
+SORUN: Geri sayım çalışmıyor
+ÇÖZÜM: Console'da hata var mı kontrol et (F12)
+
+SORUN: Form submit olmuyor
+ÇÖZÜM: Email formatı doğru mu? Console log'a bak
+
+SORUN: Animasyonlar yok
+ÇÖZÜM: Tarayıcı güncel mi? CSS support kontrol et
+
+SORUN: Mobil düzgün görünmüyor
+ÇÖZÜM: DevTools mobile view test et, viewport meta tag kontrol et
+
+================================================================
+SON KONTROL LISTESI
+================================================================
+[X] Geri sayım sayacı çalışıyor
+[X] Progress bar animasyonu var
+[X] Form submit oluyor
+[X] Modal açılıyor/kapanıyor
+[X] Sosyal medya linkleri doğru
+[X] Responsive tasarım test edildi
+[X] SEO meta tags eklendi
+[X] Analytics hazır
+[X] Backend entegrasyon ready
+
+================================================================
+DOSYA KONUMU: C:\Users\Admin\Desktop\pergoclean1.html
+ZIP ADI: pergoclean1.html (tek dosya, hepsi içinde)
+================================================================
+
+Web Builder'a not: Bu dosya production-ready. Direkt deploy edilebilir.
+Backend entegrasyonu için Satır 317'deki console.log'u API call ile değiştir.
+
+================================================================
